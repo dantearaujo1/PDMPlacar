@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Placar</string>
+    <string name="title">Rachinha PDM</string>
+    <string name="config">Configuration</string>
+    <string name="history">History</string>
+    <string name="start">Start</string>
+    <string name="home">Home</string>
+    <string name="away">Away</string>
+    <string name="initial_score">0</string>
+    <string name="undo">Undo the last score</string>
+    <string name="desc_inc_home_score">Increase home score</string>
+    <string name="desc_inc_away_score">Increase away score</string>
+    <string name="desc_dec_home_score">Decrease home score</string>
+    <string name="desc_dec_away_score">Decrease away score</string>
+    <string name="desc_reset_score">Reset the score</string>
+    <string name="time">00:00</string>
+</resources>

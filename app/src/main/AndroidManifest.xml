@@ -14,11 +14,25 @@
         android:theme="@style/Theme.Placar"
         tools:targetApi="31">
         <activity
-            android:name=".ScoreBoard"
+            android:name=".HistoryActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
             android:exported="false" />
         <activity
+            android:name=".ConfigurationActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:exported="false" />
+        <activity
+            android:name=".ScoreBoard"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

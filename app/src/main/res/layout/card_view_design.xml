@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/cardView_point"
+            android:text="@string/cardView_label_point"
             android:textSize="32sp"
             android:textStyle="bold" />
 
@@ -29,7 +29,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/bebas_neue"
             android:gravity="start"
-            android:text="@string/cardView_home"
+            android:text="@string/cardView_label_home"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -40,7 +40,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/bebas_neue"
             android:gravity="center"
-            android:text="@string/cardView_versus"
+            android:text="@string/cardView_label_versus"
             android:textSize="32sp" />
 
         <TextView
@@ -50,7 +50,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/bebas_neue"
             android:gravity="end"
-            android:text="@string/cardView_away"
+            android:text="@string/cardView_label_away"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/cardView_point"
+            android:text="@string/cardView_label_point"
             android:textSize="32sp"
             android:textStyle="bold" />
     </LinearLayout>

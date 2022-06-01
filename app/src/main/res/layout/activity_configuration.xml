@@ -30,36 +30,45 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
                 android:fontFamily="@font/bebas_neue"
-                android:text="@string/p_home"
+                android:text="@string/lb_p_home"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                tools:text="@string/p_home" />
+                tools:text="@string/lb_p_home" />
 
             <EditText
                 android:id="@+id/et_pHome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints=""
                 android:ems="10"
-                android:hint="@string/p_hint"
+                android:hint="@string/lb_p_hint"
                 android:inputType="textPersonName"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textColorHint="#BBDEFB"
+                android:maxLength="10"
+                tools:ignore="DuplicateSpeakableTextCheck" />
 
             <TextView
                 android:id="@+id/lb_pAway"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bebas_neue"
-                android:text="@string/p_away"
+                android:text="@string/lb_p_away"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                tools:text="@string/p_away" />
+                tools:text="@string/lb_p_away" />
 
             <EditText
                 android:id="@+id/et_pAway"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/p_hint"
+                android:hint="@string/lb_p_hint"
                 android:inputType="textPersonName"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:maxLength="10"
+                android:textColorHint="#BBDEFB"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/lb_previewTempo"
@@ -79,7 +88,7 @@
                 android:layout_marginHorizontal="60dp"
                 android:backgroundTint="@color/black"
                 android:fontFamily="@font/bebas_neue"
-                android:text="@string/config_time"
+                android:text="@string/btn_config_time"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:rippleColor="@color/teal_200" />
@@ -98,7 +107,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/black"
                     android:fontFamily="@font/bebas_neue"
-                    android:text="@string/create"
+                    android:text="@string/btn_create"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:rippleColor="@color/teal_200" />
@@ -114,7 +123,7 @@
                 android:layout_marginVertical="50dp"
                 android:backgroundTint="@color/black"
                 android:fontFamily="@font/bebas_neue"
-                android:text="@string/back"
+                android:text="@string/btn_back"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:rippleColor="@color/teal_200" />

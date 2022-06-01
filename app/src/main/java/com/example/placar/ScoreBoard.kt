@@ -32,6 +32,7 @@ class ScoreBoard : AppCompatActivity() {
         val btn_home = findViewById<Button>(R.id.btn_home);
         val btn_away = findViewById<Button>(R.id.btn_away);
         val btn_undo = findViewById<Button>(R.id.btn_undo);
+        val btn_new = findViewById<Button>(R.id.btn_newGame);
         val btn_startClock = findViewById<Button>(R.id.btn_time)
         val btn_2time = findViewById<Button>(R.id.btn_2time)
         val meter = findViewById<Chronometer>(R.id.c_meter);
@@ -59,6 +60,12 @@ class ScoreBoard : AppCompatActivity() {
                 awayPoint += 1;
                 undos.add(2);
                 btn_away.text = awayPoint.toString();
+            }
+        })
+        btn_new?.setOnClickListener(object: View.OnClickListener{
+            override fun onClick(v: View?){
+                val intent = Intent(this@ScoreBoard,ConfigurationActivity::class.java)
+                startActivity(intent)
             }
         })
         btn_undo?.setOnClickListener(object: View.OnClickListener {

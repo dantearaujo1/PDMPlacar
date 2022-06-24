@@ -29,7 +29,6 @@ class HistoryActivity : AppCompatActivity() {
 
         })
     }
-
     fun createHistory(){
         val configsFile = "config"
         var sp:SharedPreferences = getSharedPreferences(configsFile, Context.MODE_PRIVATE)
@@ -44,7 +43,10 @@ class HistoryActivity : AppCompatActivity() {
         for (i in 0..matchQuantity){
             val id = i
             if(id==0)continue
-            data.add(ItemViewModel(sp.getInt("PointHome"+id,0),sp.getInt("PointAway"+id, 0),sp.getString("PlayerHome"+id, "Team One").toString(),sp.getString("PlayerAway"+id,"Team Two").toString()))
+            data.add(ItemViewModel(sp.getInt("PointHome"+id,0),
+                sp.getInt("PointAway"+id, 0),
+                sp.getString("PlayerHome"+id, "Team One").toString(),
+                sp.getString("PlayerAway"+id,"Team Two").toString()))
         }
 
         val adapter = CustomAdapter(data)

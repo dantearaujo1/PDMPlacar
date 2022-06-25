@@ -120,10 +120,10 @@ Foi criada uma nova activity para apresentar os detalhes de cada partida, inicia
 </p>
   
  <p align="center">
-<img src="https://user-images.githubusercontent.com/21104508/175750791-0f0c1d35-2198-41be-a55d-10308ea4b812.png"  width=100%/>
+<img src="https://user-images.githubusercontent.com/21104508/175750791-0f0c1d35-2198-41be-a55d-10308ea4b812.png"  width=400/>
 </p>
    <p align="center">
-<img src="https://user-images.githubusercontent.com/21104508/175750804-1a876335-331f-45f8-ac07-8ad13ce04c1f.png"  width=100%/>
+<img src="https://user-images.githubusercontent.com/21104508/175750804-1a876335-331f-45f8-ac07-8ad13ce04c1f.png"  width=400/>
 </p>
 
  

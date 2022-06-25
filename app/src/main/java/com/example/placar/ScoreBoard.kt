@@ -1,17 +1,24 @@
 package com.example.placar
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.location.Location
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Chronometer
-import android.widget.Chronometer.OnChronometerTickListener
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.tasks.Task
 
 class ScoreBoard : AppCompatActivity() {
     var isWorking = false
@@ -21,7 +28,13 @@ class ScoreBoard : AppCompatActivity() {
     var gamePausedTime: Long = 0
     var matchID: Int = 0
     var firstHalfGone: Boolean = false
-    val undos = ArrayList<Int>(50)
+    var locationPermissionGranted: Boolean = false
+    lateinit var lastLocation:Location
+    var undos = ArrayList<Int>(50)
+    lateinit var fusedLocationProviderClient:FusedLocationProviderClient
+
+    val PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 101
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +49,9 @@ class ScoreBoard : AppCompatActivity() {
         val btn_startClock = findViewById<Button>(R.id.btn_time)
         val btn_2time = findViewById<Button>(R.id.btn_2time)
         val meter = findViewById<Chronometer>(R.id.c_meter);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
+        getLocation()
         lb_half.text = getString(R.string.lb_half,1);
 
         btn_back?.setOnClickListener(object: View.OnClickListener{
@@ -104,7 +119,6 @@ class ScoreBoard : AppCompatActivity() {
                 } else {
                     gamePausedTime = SystemClock.elapsedRealtime()
                     meter.stop()
-                    isWorking = false
                 }
             }
         })
@@ -165,11 +179,17 @@ class ScoreBoard : AppCompatActivity() {
         val sharedFileName="config"
         var sp: SharedPreferences = getSharedPreferences(sharedFileName, Context.MODE_PRIVATE)
         var editor = sp.edit()
+        getLocation()
         editor.putString("PlayerHome"+matchID, findViewById<TextView>(R.id.label_player1).text.toString())
         editor.putString("PlayerAway"+matchID, findViewById<TextView>(R.id.label_player2).text.toString())
         editor.putInt("PointHome"+matchID, findViewById<Button>(R.id.btn_home).text.toString().toInt())
         editor.putInt("PointAway"+matchID, findViewById<Button>(R.id.btn_away).text.toString().toInt())
         editor.putInt("CountTime"+matchID, gameTime)
+
+        Log.d("PDM", "Location: " + lastLocation.latitude.toString())
+        editor.putString("Lat"+matchID, lastLocation.latitude.toString())
+        editor.putString("Long"+matchID, lastLocation.longitude.toString())
+
         editor.putInt("MatchQuantity",matchID)
         editor.putInt("Match"+matchID,matchID)
         Log.d("PDM", "Saved MatchID is : " + matchID)
@@ -179,5 +199,45 @@ class ScoreBoard : AppCompatActivity() {
         editor.putString("LastPlayerAway", findViewById<TextView>(R.id.label_player2).text.toString())
         editor.putInt("LastCounterTime", gameTime)
         editor.apply()
+    }
+
+    private fun checkPermission(){
+        if (ContextCompat.checkSelfPermission(this.applicationContext, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+            ContextCompat.checkSelfPermission(this.applicationContext,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            locationPermissionGranted = true
+        }
+        else {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION),
+                PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION)
+            return
+        }
+    }
+
+    private fun getLocation(){
+        checkPermission()
+        var test:String = ""
+        if(locationPermissionGranted){
+            fusedLocationProviderClient.lastLocation.addOnSuccessListener { location->
+                if(location != null){
+                    lastLocation = location
+                }
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>,
+                                            grantResults: IntArray) {
+        when (requestCode) {
+            PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION -> {
+
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.isNotEmpty() &&
+                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    locationPermissionGranted = true
+                }
+            }
+            else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        }
     }
 }

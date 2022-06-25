@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class HistoryActivity : AppCompatActivity() {
+class HistoryActivity : AppCompatActivity(){
     var matchQuantity: Int = 0;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,13 +46,16 @@ class HistoryActivity : AppCompatActivity() {
             data.add(ItemViewModel(sp.getInt("PointHome"+id,0),
                 sp.getInt("PointAway"+id, 0),
                 sp.getString("PlayerHome"+id, "Team One").toString(),
-                sp.getString("PlayerAway"+id,"Team Two").toString()))
+                sp.getString("PlayerAway"+id,"Team Two").toString(),
+                sp.getString("Lat"+id,"").toString(),
+                sp.getString("Long"+id,"").toString()))
         }
 
         val adapter = CustomAdapter(data)
 
         recyclerView.adapter = adapter;
     }
+
 
 
 }

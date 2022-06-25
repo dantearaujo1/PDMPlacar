@@ -119,6 +119,11 @@ Responsável por receber os extras que as outras atividades mandam pelo os inten
 Foi criada uma nova activity para apresentar os detalhes de cada partida, inicialmente foi mostrado o nome dos times nessa activity, seus pontos e o local onde ocorre a partida é mostrada em um mapa do google maps utilizando FragmentContainerView. É checado a permissão para a utilização da localização, tanto a coarse location permission quanto a Fine location. caso não tenha sido permitido , faz uma requisição das mesmas. Após isso utilizasse a função get location para receber a ultima localização conhecida do aparelho atravez de um fusedlocationproviderclient.
 </p>
   
- 
-  
+ <p align="center">
+<img src="https://user-images.githubusercontent.com/21104508/175750791-0f0c1d35-2198-41be-a55d-10308ea4b812.png"  width=100%/>
+</p>
+   <p align="center">
+<img src="https://user-images.githubusercontent.com/21104508/175750804-1a876335-331f-45f8-ac07-8ad13ce04c1f.png"  width=100%/>
+</p>
+
  

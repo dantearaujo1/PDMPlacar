@@ -111,4 +111,14 @@ Na mesma classe a função onCreate é responsável por criar o TimePickerDialog
 Responsável por receber os extras que as outras atividades mandam pelo os intents e carregá-las nas lb_home (label Home), lb_away e na variável gameTime. isso é feito logo na função onCreate, assim como setar os ClickListeners nos botões. Utilizei uma lista de inteiros para fazer a lógica do undo e um Chronometer para realizar a logica do cronometro [Logica ta presente na função btn_startClock?.setOnClickListener e btn_2time.setOnCLickListener
 </p>
   
+  <h2> Utilização da API FUSEDLOCATION PROVIDER E DA API DO GOOGLE MAPS </h2>
+  
+  <h3> DetailHistoryActivity </h3>
+
+<p align="justify">
+Foi criada uma nova activity para apresentar os detalhes de cada partida, inicialmente foi mostrado o nome dos times nessa activity, seus pontos e o local onde ocorre a partida é mostrada em um mapa do google maps utilizando FragmentContainerView. É checado a permissão para a utilização da localização, tanto a coarse location permission quanto a Fine location. caso não tenha sido permitido , faz uma requisição das mesmas. Após isso utilizasse a função get location para receber a ultima localização conhecida do aparelho atravez de um fusedlocationproviderclient.
+</p>
+  
+ 
+  
  
